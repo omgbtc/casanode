@@ -1,0 +1,11 @@
+version: '2.4'
+
+services:
+  welcome:
+    container_name: welcome
+    hostname: welcome
+    image: casanode${REPOSITORY_ADDENDUM}/welcome:${TAG}
+    ports:
+      - "80:80"
+    labels:
+      - casa=persist

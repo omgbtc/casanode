@@ -1,0 +1,85 @@
+version: '2.4'
+
+services:
+  bitcoind:
+    container_name: bitcoind
+    hostname: bitcoind
+    restart: unless-stopped
+    image: casanode${REPOSITORY_ADDENDUM}/bitcoind:${TAG}
+    entrypoint: ./chains/bitcoind/start_bitcoind.sh
+    volumes:
+      - bitcoind-data:/usr/local/casa/chains/bitcoind/data
+    network_mode: host
+    environment:
+      - BITCOIN_NETWORK
+      - BITCOIND_LISTEN
+      - RPC_USER
+      - RPC_PASSWORD
+    mem_limit: 512m
+    memswap_limit: -1 # unlimited access to device swap
+    cpus: 3 #bitcoind_cpus
+    cpuset: 1-3 #bitcoind_cpuset
+
+  lnapi:
+    container_name: lnapi
+    hostname: lnapi
+    restart: unless-stopped
+    image: casanode${REPOSITORY_ADDENDUM}/lnapi:${TAG}
+    volumes:
+      - lnd-data:/lnd:ro
+      - channel-data:/channel-data
+    network_mode: host
+    environment:
+      - BITCOIN_NETWORK
+      - LND_NETWORK
+      - JWT_PUBLIC_KEY
+      - RPC_USER
+      - RPC_PASSWORD
+
+  lnd:
+    container_name: lnd
+    hostname: lnd
+    restart: unless-stopped
+    image: casanode${REPOSITORY_ADDENDUM}/lnd:${TAG}
+    depends_on:
+      - bitcoind
+    entrypoint: ./chains/lnd/start-lnd.sh
+    network_mode: host
+    volumes:
+      - lnd-data:/root/.lnd #TODO: split up data, config
+    environment:
+      - AUTOPILOT
+      - BACKEND
+      - CHAIN
+      - EXTERNAL_IP
+      - LND_NETWORK
+      - LND_NODE_ALIAS
+      - MAX_CHANNELS
+      - MAX_CHAN_SIZE
+      - RPC_USER
+      - RPC_PASSWORD
+    cpus: 3 #lnd_cpus
+    cpuset: 1-3 #lnd_cpuset
+
+  space-fleet:
+    container_name: space-fleet
+    hostname: space-fleet
+    restart: unless-stopped
+    image: casanode${REPOSITORY_ADDENDUM}/space-fleet:${TAG}
+    ports:
+      - "80:3000"
+    networks:
+      - arpanet
+    environment:
+      - DEVICE_HOST
+    mem_limit: 256m
+    memswap_limit: -1 # unlimited access to device swap
+    oom_kill_disable: true
+
+volumes:
+  channel-data:
+  bitcoind-data:
+  lnd-data:
+
+networks:
+  arpanet:

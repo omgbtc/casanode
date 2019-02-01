@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  download:
+    container_name: download
+    hostname: download
+    image: casanode${REPOSITORY_ADDENDUM}/download:${TAG}
+    entrypoint: ./download.sh
+    volumes:
+      - ./applications/.env:/usr/local/casa/applications/.env
+      - bitcoind-data:/data
+    network_mode: "host"
+    environment:
+      - ARCHIVE_CHAIN
+      - ARCHIVE_NETWORK
+
+volumes:
+  bitcoind-data:

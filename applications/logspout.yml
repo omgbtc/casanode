@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  syslog:
+    container_name: syslog
+    hostname: syslog
+    restart: always
+    image: casanode${REPOSITORY_ADDENDUM}/syslog:${TAG}
+    ports:
+      - "514:514"
+    volumes:
+      - logs:/logs/node
+    networks:
+      - logs
+
+  logspout:
+    container_name: logspout
+    hostname: logspout
+    restart: always
+    image: casanode${REPOSITORY_ADDENDUM}/logspout:${TAG}
+    environment:
+      SYSLOG_TAG: $SERIAL
+    depends_on:
+      - syslog
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: syslog://syslog:514
+    networks:
+      - logs
+
+networks:
+  logs:
+
+volumes:
+  logs:

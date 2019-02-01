@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  device-host:
+    container_name: device-host
+    hostname: device-host
+    image: casanode${REPOSITORY_ADDENDUM}/device-host:${TAG}
+    volumes:
+      - ./applications/.env:/usr/local/casa/applications/.env
+    network_mode: "host"
