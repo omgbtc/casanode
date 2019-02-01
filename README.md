@@ -21,6 +21,8 @@ sudo chmod +x /usr/local/bin/docker-compose
 git clone https://github.com/omgbtc/casanode.git
 sudo ln -s $PWD/casanode /usr/local/casa
 cd /usr/local/casa
+### Update IP_OF_SERVER in /usr/local/casa/applications/.env
+vim /usr/local/casa/applications/.env
 ### Deploy casanode
 ./launch.sh
 ```
