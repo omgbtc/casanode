@@ -16,7 +16,7 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-
 sudo chmod +x /usr/local/bin/docker-compose 
 ### Clone repo
 git clone https://github.com/omgbtc/casanode.git
-sudo ln -s ./casanode /usr/local/casa
+sudo ln -s $PWD/casanode /usr/local/casa
 ### Deploy casanode
 ./launch.sh
 ### Destroy everything
