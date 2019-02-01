@@ -20,6 +20,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 ### Clone repo
 git clone https://github.com/omgbtc/casanode.git
 sudo ln -s $PWD/casanode /usr/local/casa
+cd /usr/local/casa
 ### Deploy casanode
 ./launch.sh
 ```
