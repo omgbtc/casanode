@@ -13,6 +13,7 @@ For ubuntu/linux
 curl -fsSL https://get.docker.com -o get-docker.sh
 sh get-docker.sh 
 sudo usermod -aG docker $USER
+### RECONNECT to server or restart terminal for your user to be able to user docker commands
 ### Install Docker Compose
 sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose 
