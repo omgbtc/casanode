@@ -21,6 +21,13 @@ sudo ln -s $PWD/casanode /usr/local/casa
 ./launch.sh
 ```
 
+```sh
+### Once you see bitcoind start 
+docker ps -a
+###run the following command
+docker container update -m 1024m bitcoind
+```
+
 Navigate to http://IP/ or http://IP/intro
 
 ```sh
