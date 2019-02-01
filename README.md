@@ -4,6 +4,8 @@ This is a work in progess and is not functioning.
 
 For ubuntu/linux
 
+## Note must system link to /usr/local/casa/
+
 > ### Install Docker
 > curl -fsSL https://get.docker.com -o get-docker.sh
 > sh get-docker.sh 
@@ -13,6 +15,7 @@ For ubuntu/linux
 > sudo chmod +x /usr/local/bin/docker-compose 
 > ### Clone repo
 > git clone https://github.com/omgbtc/casanode.git
+> ln -s $PWD/casanode /usr/local/casa
 > ### Deploy casanode
 > ./launch.sh
 > ### Destroy everything

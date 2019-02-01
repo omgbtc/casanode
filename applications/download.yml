@@ -7,7 +7,7 @@ services:
     image: casanode${REPOSITORY_ADDENDUM}/download:${TAG}
     entrypoint: ./download.sh
     volumes:
-      - ./.env:/usr/local/casa/applications/.env
+      - /usr/local/casa/applications/.env:/usr/local/casa/applications/.env
       - bitcoind-data:/data
     network_mode: "host"
     environment:

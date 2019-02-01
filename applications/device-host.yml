@@ -6,5 +6,5 @@ services:
     hostname: device-host
     image: casanode${REPOSITORY_ADDENDUM}/device-host:${TAG}
     volumes:
-      - ./.env:/usr/local/casa/applications/.env
+      - /usr/local/casa/applications/.env:/usr/local/casa/applications/.env
     network_mode: "host"

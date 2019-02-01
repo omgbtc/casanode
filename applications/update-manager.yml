@@ -10,7 +10,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - /usr/bin/docker:/usr/bin/docker
       - /usr/local/bin/docker-compose:/usr/local/bin/docker-compose
-      - ./:/usr/local/casa/applications
+      - /usr/local/casa/applications:/usr/local/casa/applications
       - accounts:/accounts
     ports:
       - "3001:3000"
