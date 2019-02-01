@@ -1,3 +1,5 @@
+reach me @omgbtc on twitter.
+
 # casanode anywhere
 
 This is a work in progess and is not functioning.
