@@ -5,7 +5,7 @@ This is a work in progess and is not functioning.
   - install docker
   - install docker-compose
 
-> # Deploy casanode
+> ### Deploy casanode
 > ./launch.sh
-> # Destory everything
+> ### Destroy everything
 > ./reset-all.sh
