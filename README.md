@@ -15,7 +15,7 @@ For ubuntu/linux
 > sudo chmod +x /usr/local/bin/docker-compose 
 > ### Clone repo
 > git clone https://github.com/omgbtc/casanode.git
-> ln -s $PWD/casanode /usr/local/casa
+> sudo ln -s ./casanode /usr/local/casa
 > ### Deploy casanode
 > ./launch.sh
 > ### Destroy everything
