@@ -27,7 +27,7 @@ cd /usr/local/casa
 
 ```sh
 ### Once you see bitcoind start 
-docker ps -a
+watch docker ps -a
 ###run the following command
 docker container update -m 1024m bitcoind
 ```
