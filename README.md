@@ -19,6 +19,11 @@ git clone https://github.com/omgbtc/casanode.git
 sudo ln -s $PWD/casanode /usr/local/casa
 ### Deploy casanode
 ./launch.sh
+```
+
+Navigate to http://IP/ or http://IP/intro
+
+```sh
 ### Destroy everything
 ./reset-all.sh
 ```
